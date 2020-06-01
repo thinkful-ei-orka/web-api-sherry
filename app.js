@@ -51,6 +51,17 @@ app.get('/greetings', (req, res) => {
   res.send(greeting);
 })
 
+app.get('/sum', (req, res) => {
+  const a = Number(req.query.a);
+  const b = Number(req.query.b);
+
+  const c = a + b;
+
+  const answer = `The sum of ${a} and ${b} is ${c}`
+  res.send(answer);
+
+})
+
 app.listen(8080, () => {
   console.log('Express server is listening on port 8080!');
 })
