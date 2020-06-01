@@ -62,6 +62,27 @@ app.get('/sum', (req, res) => {
 
 })
 
+app.get('/cipher', (req, res) => {
+  text = req.query.text; //"Hello"
+  shift = Number(req.query.shift); //"4" => 4
+
+  let textArr = text.split('');
+  let textNum = [];
+
+  textNum = textArr.map(letter => {
+    return textNum + (letter.charCodeAt() + shift);
+  })
+
+  let newText = [];
+
+  newText = textNum.map(num => {
+    return newText + (String.fromCharCode(num));
+  })
+
+  const shiftedText =  newText.join('');
+  res.send(shiftedText);
+})
+
 app.listen(8080, () => {
   console.log('Express server is listening on port 8080!');
 })
